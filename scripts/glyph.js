@@ -1,19 +1,20 @@
 "use strict";
 
-Game.Glyph = function(char, foreground, background) {
-    // Instantiate properties to default if they weren't passed
-    this._char = char || ' ';
-    this._foreground = foreground || 'white';
-    this._background = background || 'black';
-};
+class Glyph {
+    _char = '';
+    _foreground = '';
+    _background = '';
 
-// Create standard getters for glyphs
-Game.Glyph.prototype.getChar = function(){ 
-    return this._char; 
-}
-Game.Glyph.prototype.getBackground = function(){
-    return this._background;
-}
-Game.Glyph.prototype.getForeground = function(){ 
-    return this._foreground; 
+    constructor(properties) {
+        // Instantiate properties to default if they weren't passed
+        properties = properties || {};
+
+        this._char = properties['character'] || ' ';
+        this._foreground = properties['foreground'] || 'white';
+        this._background = properties['background'] || 'black';
+    }
+
+    get char() { return this._char; }
+    get foreground() { return this._foreground; }
+    get background() { return this._background; }
 }
